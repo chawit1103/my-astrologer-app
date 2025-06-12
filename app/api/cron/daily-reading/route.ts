@@ -3,7 +3,7 @@
 
 import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from '@google/generative-ai';
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase'; // Import Supabase client instance ของคุณ
+import { supabase } from '@/lib/supabaseClient'; // Import Supabase client instance ของคุณ
 
 // ตรวจสอบ Google AI API Key และ Cron Secret จาก environment variables
 const GEMINI_API_KEY = process.env.GOOGLE_AI_API_KEY;
