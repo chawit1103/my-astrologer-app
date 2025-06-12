@@ -3,7 +3,7 @@
 
 import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from '@google/generative-ai';
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabaseClient'; // Import Supabase client instance ของคุณ
+import { supabase } from '/@lib/supabaseClient'; // Import Supabase client instance ของคุณ
 
 // ตรวจสอบ Google AI API Key และ Cron Secret จาก environment variables
 const GEMINI_API_KEY = process.env.GOOGLE_AI_API_KEY;
@@ -50,7 +50,7 @@ export async function GET(request: Request) {
     }
 
     let successfulReadings = 0;
-    const usersToProcess = Array.from(new Set(activeSubscriptions.map(sub => sub.user_id))); // ดึง user_id ที่ไม่ซ้ำกัน
+    const usersToProcess = Array.from(new Set(activeSubscriptions.map((sub: { user_id: string }) => sub.user_id))); // ดึง user_id ที่ไม่ซ้ำกัน
 
     console.log(`Found ${usersToProcess.length} unique active users to generate readings for.`);
 
